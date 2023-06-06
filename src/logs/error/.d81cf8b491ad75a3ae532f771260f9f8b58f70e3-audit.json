@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "D:\\smagno\\xMaterialEstudio\\NodeJS\\2023\\node-api-ts\\src\\logs\\error\\.d81cf8b491ad75a3ae532f771260f9f8b58f70e3-audit.json",
+    "files": [
+        {
+            "date": 1686022908489,
+            "name": "D:\\smagno\\xMaterialEstudio\\NodeJS\\2023\\node-api-ts\\src\\logs\\error\\2023-06-05.log",
+            "hash": "8d08153811436e50f6e7d6aae0992f58e6c6d5f8ad165a4cbfbebb39c8be4cc5"
+        }
+    ],
+    "hashType": "sha256"
+}
