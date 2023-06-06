@@ -1,14 +1,16 @@
 # Add any directories, files, or patterns you don't want to be tracked by version control
+build/
 node_modules/
 npm-debug.log
 .vscode/
-log/
+logs/
 .idea/
 coverage/
 lcov.info
 package-lock.json
 .nyc_output/
+
 .env
-.env.development.local
+.env.development.local/
 .env.test.local
 .env.production.local
