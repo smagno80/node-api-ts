@@ -1,7 +1,7 @@
-import express from "express";
+import App from './app';
+import BaseRoute from './routes/base.routes';
+import UserRoute from './routes/user.routes';
 
-const app = express();
+const app = new App([new BaseRoute(), new UserRoute()]);
 
-app.listen(5000, () => {
-  `api running in port: 5000`;
-});
+app.listen();

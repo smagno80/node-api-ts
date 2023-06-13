@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "D:\\smagno\\xMaterialEstudio\\NodeJS\\2023\\node-api-ts\\src\\logs\\debug\\.e2643121fd81bdb2ebe443df60bd9df19457164d-audit.json",
+    "files": [
+        {
+            "date": 1686022908483,
+            "name": "D:\\smagno\\xMaterialEstudio\\NodeJS\\2023\\node-api-ts\\src\\logs\\debug\\2023-06-05.log",
+            "hash": "10a57ffda5de5d8b98d5cb545de9a53731a0be06209bfe50803bc5c90c5ce892"
+        },
+        {
+            "date": 1686612232707,
+            "name": "D:\\smagno\\xMaterialEstudio\\NodeJS\\2023\\node-api-ts\\src\\logs\\debug\\2023-06-12.log",
+            "hash": "d0486cf017027ad6d3ccf5c1a1adaaaed8483792edc831e29449924b4ce086d9"
+        }
+    ],
+    "hashType": "sha256"
+}
