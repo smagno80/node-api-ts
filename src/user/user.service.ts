@@ -1,4 +1,4 @@
-import { logger } from "../utils/logger";
+import { logger } from '../utils/logger';
 
 class UserService {
   constructor() {}
@@ -8,9 +8,7 @@ class UserService {
    */
   public async getAllUsers() {
     logger.info(`${UserService.name} - getAllUsers`);
-    const users = [
-      { id: 1, fullname: "rabindranath ferreira", email: "rfv@correo.com" },
-    ];
+    const users = [{ id: 1, fullname: 'rabindranath ferreira', email: 'rfv@correo.com' }];
     return users;
   }
 
@@ -21,8 +19,8 @@ class UserService {
     logger.info(`${UserService.name} - getUserById with id ${id}`);
     const user = {
       id,
-      fullname: "pedro lopez",
-      email: "plopez@correo.com",
+      fullname: 'pedro lopez',
+      email: 'plopez@correo.com',
     };
 
     return user;
@@ -32,10 +30,7 @@ class UserService {
    * createUser
    */
   public async createUser(userBody: any) {
-    console.log(
-      "🚀 ~ file: user.service.ts:35 ~ UserService ~ createUser ~ userBody",
-      userBody
-    );
+    console.log('🚀 ~ file: user.service.ts:35 ~ UserService ~ createUser ~ userBody', userBody);
     logger.info(`${UserService.name} - createUser`);
     const newUser = { ...userBody, id: 1000 };
     return newUser;
@@ -45,10 +40,7 @@ class UserService {
    * updateUserById
    */
   public async updateUserById(id: string, updateUserBody: any) {
-    console.log(
-      "🚀 ~ file: user.service.ts:48 ~ UserService ~ updateUserById ~ updateUserBody",
-      updateUserBody
-    );
+    console.log('🚀 ~ file: user.service.ts:48 ~ UserService ~ updateUserById ~ updateUserBody', updateUserBody);
     logger.info(`${UserService.name} - updateUserById with id ${id}`);
     const updatedUser = { ...updateUserBody, id: 1000 };
     return updatedUser;
@@ -61,8 +53,8 @@ class UserService {
     logger.info(`${UserService.name} - deleteUserById with id ${id}`);
     const userDeleted = {
       id,
-      fullname: "carlos diaz",
-      email: "cdiaz@correo.com",
+      fullname: 'carlos diaz',
+      email: 'cdiaz@correo.com',
     };
 
     return userDeleted;

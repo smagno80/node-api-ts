@@ -1,8 +1,8 @@
-import { Request, Response, Router } from "express";
-import { Routes } from "../interfaces/route.interface";
+import { Request, Response, Router } from 'express';
+import { Routes } from '../interfaces/route.interface';
 
 class BaseRoute implements Routes {
-  public path = "/alive";
+  public path = '/alive';
   public router = Router();
 
   constructor() {
@@ -11,7 +11,7 @@ class BaseRoute implements Routes {
 
   public initBaseRoutes() {
     this.router.get(`${this.path}`, (_req: Request, res: Response) => {
-      res.status(200).json({ ok: true, message: "API is alive" });
+      res.status(200).json({ ok: true, message: 'API is alive' });
     });
   }
 }

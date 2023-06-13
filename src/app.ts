@@ -1,22 +1,16 @@
-import cookieParser from "cookie-parser";
-import cors from "cors";
-import express from "express";
-import displayRoutes from "express-routemap";
-import helmet from "helmet";
-import hpp from "hpp";
-import morgan from "morgan";
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import express from 'express';
+import displayRoutes from 'express-routemap';
+import helmet from 'helmet';
+import hpp from 'hpp';
+import morgan from 'morgan';
 
-import {
-  API_VERSION,
-  ConfigServer,
-  LOG_FORMAT,
-  NODE_ENV,
-  PORT,
-} from "./config/config";
-import { corsConfig } from "./config/cors.config";
-import { Routes } from "./interfaces/route.interface";
-import { logger, stream } from "./utils/logger";
-import { DataSource } from "typeorm";
+import { API_VERSION, ConfigServer, LOG_FORMAT, NODE_ENV, PORT } from './config/config';
+import { corsConfig } from './config/cors.config';
+import { Routes } from './interfaces/route.interface';
+import { logger, stream } from './utils/logger';
+import { DataSource } from 'typeorm';
 
 class App extends ConfigServer {
   public app: express.Application;
@@ -27,7 +21,7 @@ class App extends ConfigServer {
   constructor(routes: Routes[]) {
     super();
     this.app = express();
-    this.env = NODE_ENV || "development";
+    this.env = NODE_ENV || 'development';
     this.port = Number(PORT) || 5000;
 
     this.connectToDatabase();
@@ -61,7 +55,7 @@ class App extends ConfigServer {
   }
 
   private initializeMiddlewares() {
-    this.app.use(morgan(LOG_FORMAT ?? "../logs", { stream }));
+    this.app.use(morgan(LOG_FORMAT ?? '../logs', { stream }));
     this.app.use(cors(corsConfig));
     this.app.use(hpp());
     this.app.use(helmet());
