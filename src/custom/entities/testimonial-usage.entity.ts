@@ -1,4 +1,5 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+
 import { TestimonialEntity } from '../../testimonial/entities/testimonial.entity';
 
 @Entity({ name: 'testimonial_usage' })
@@ -10,10 +11,12 @@ export class TestimonialUsageEntity {
   websiteUrl!: string;
 
   @Column()
+  @CreateDateColumn()
   createdAt!: Date;
 
   @Column()
-  updateAt!: Date;
+  @UpdateDateColumn()
+  updatedAt!: Date;
 
   @ManyToOne(() => TestimonialEntity, (testimonial) => testimonial.testimonialUsages)
   @JoinColumn({ name: 'testimonial_id' })

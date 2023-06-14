@@ -3,8 +3,7 @@ import { logger } from '../utils/logger';
 import UserService from './user.service';
 
 class UserController {
-  private readonly userService: UserService = new UserService();
-  constructor() {}
+  constructor(private readonly userService: UserService = new UserService()) {}
 
   /**
    * getAllUsers
