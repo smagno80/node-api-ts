@@ -5,12 +5,15 @@ import displayRoutes from 'express-routemap';
 import helmet from 'helmet';
 import hpp from 'hpp';
 import morgan from 'morgan';
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 
 import { DataSource } from 'typeorm';
 import { JwtStrategy } from './auth/strategies/jwt.strategy';
 import { LoginStrategy } from './auth/strategies/login.strategy';
 import { API_VERSION, ConfigServer, LOG_FORMAT, NODE_ENV, PORT } from './config/config';
 import { corsConfig } from './config/cors.config';
+import { swaggerOptions } from './config/swagger.config';
 import { Routes } from './interfaces/route.interface';
 import { logger, stream } from './utils/logger';
 
@@ -88,7 +91,8 @@ class App extends ConfigServer {
   }
 
   private initializeSwagger() {
-    // TODO: Initialize Swagger
+    const configSwagger = swaggerJsdoc(swaggerOptions);
+    this.app.use(`/api/${API_VERSION}/docs`, swaggerUi.serve, swaggerUi.setup(configSwagger));
   }
 
   private initializeErrorHandling() {
