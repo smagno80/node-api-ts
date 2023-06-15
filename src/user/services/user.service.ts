@@ -5,6 +5,7 @@ import { createHashValue } from '../../utils/hash';
 import { logger } from '../../utils/logger';
 import { UserDTO } from '../dto/user.dto';
 import { UserEntity } from '../entities/user.entity';
+import { RoleType } from '../type/user.type';
 
 class UserService extends BaseService<UserEntity> {
   constructor() {
@@ -52,6 +53,23 @@ class UserService extends BaseService<UserEntity> {
     }
   }
 
+  /**
+   * findUserWithRol
+   */
+  public async findUserWithRol(uId: string, role: RoleType): Promise<UserEntity | null | undefined> {
+    try {
+      logger.info(`${UserService.name} - findUserWithRol`);
+      const user = (await this.useRepository).createQueryBuilder('user').where({ id: uId }).andWhere({ role }).getOne();
+
+      return user;
+    } catch (error) {
+      console.log('🚀 ~ file: user.service.ts:54 ~ UserService ~ getUserByIdWithRel ~ error:', error);
+    }
+  }
+
+  /**
+   * findUserByEmail
+   */
   public async findUserByEmail(email: string): Promise<UserEntity | null | undefined> {
     try {
       logger.info(`${UserService.name} - findUserByEmail with email: ${email}`);

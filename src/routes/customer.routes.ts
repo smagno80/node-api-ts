@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import CustomerController from '../customer/controllers/customer.controller';
 import { CustomerDTO } from '../customer/dto/customer.dto';
-import { ValidateMiddlewareDTO } from '../middleware/validate-dto.middleware';
+import { ValidateMiddlewareDTO } from '../shared/middleware/validate-dto.middleware';
 import { BaseRouter } from '../shared/router/base.router';
 
 class CustomerRoute extends BaseRouter<CustomerController, ValidateMiddlewareDTO> {

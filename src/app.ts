@@ -6,11 +6,13 @@ import helmet from 'helmet';
 import hpp from 'hpp';
 import morgan from 'morgan';
 
+import { DataSource } from 'typeorm';
+import { JwtStrategy } from './auth/strategies/jwt.strategy';
+import { LoginStrategy } from './auth/strategies/login.strategy';
 import { API_VERSION, ConfigServer, LOG_FORMAT, NODE_ENV, PORT } from './config/config';
 import { corsConfig } from './config/cors.config';
 import { Routes } from './interfaces/route.interface';
 import { logger, stream } from './utils/logger';
-import { DataSource } from 'typeorm';
 
 class App extends ConfigServer {
   public app: express.Application;
@@ -27,6 +29,7 @@ class App extends ConfigServer {
     this.connectToDatabase();
     this.initializeMiddlewares();
     this.initializeRoutes(routes);
+    this.passportUse();
     this.initializeSwagger();
     this.initializeErrorHandling();
   }
@@ -39,6 +42,10 @@ class App extends ConfigServer {
     this.server = this.app.listen(this.port, () => {
       done();
     });
+  }
+
+  public passportUse() {
+    return [new LoginStrategy().use, new JwtStrategy().use];
   }
 
   private async connectToDatabase(): Promise<DataSource | void> {
