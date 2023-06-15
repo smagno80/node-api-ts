@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { logger } from '../utils/logger';
-import UserService from './user.service';
-import { HttpResponse } from '../shared/response/http.response';
+import { HttpResponse } from '../../shared/response/http.response';
+import { logger } from '../../utils/logger';
+import UserService from '../services/user.service';
 
 class UserController {
   constructor(

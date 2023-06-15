@@ -1,9 +1,10 @@
 import { DeleteResult, UpdateResult } from 'typeorm';
-import { BaseService } from '../config/base.service';
-import { logger } from '../utils/logger';
-import { UserEntity } from './entities/user.entity';
-import { UserDTO } from './dto/user.dto';
-import { createHashValue } from '../utils/hash';
+import { BaseService } from '../../config/base.service';
+import { logger } from '../../utils/logger';
+import { UserEntity } from '../entities/user.entity';
+import { UserDTO } from '../dto/user.dto';
+import { createHashValue } from '../../utils/hash';
+import { HttpException } from '../../exception/httpExceptions';
 
 class UserService extends BaseService<UserEntity> {
   constructor() {
@@ -25,9 +26,7 @@ class UserService extends BaseService<UserEntity> {
   public async getUserById(uId: string): Promise<UserEntity | null> {
     logger.info(`${UserService.name} - getUserById with id ${uId}`);
     const user = await (await this.useRepository).findOneBy({ id: uId });
-    if (!user) {
-      throw new Error('User not found');
-    }
+    if (!user) throw new HttpException(409, "user doesn't exist");
     return user;
   }
 
@@ -50,9 +49,7 @@ class UserService extends BaseService<UserEntity> {
     console.log('🚀 ~ file: user.service.ts:48 ~ UserService ~ updateUserById ~ updateUserBody', updateUserBody);
     logger.info(`${UserService.name} - updateUserById with id ${id}`);
     const findUser = await (await this.useRepository).findOneBy({ id });
-    if (!findUser) {
-      throw new Error('User not found');
-    }
+    if (!findUser) throw new HttpException(409, "user doesn't exist");
     return await (await this.useRepository).update(id, { ...updateUserBody });
   }
 
@@ -63,7 +60,7 @@ class UserService extends BaseService<UserEntity> {
     logger.info(`${UserService.name} - deleteUserById with id ${id}`);
     const findUser = await (await this.useRepository).findOneBy({ id });
     if (!findUser) {
-      throw new Error('User not found');
+      throw new HttpException(409, "user doesn't exist");
     }
     return await (await this.useRepository).delete({ id });
   }

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import CustomerController from '../customer/customer.controller';
+import CustomerController from '../customer/controllers/customer.controller';
 import { Routes } from '../interfaces/route.interface';
 
 class CustomerRoute implements Routes {

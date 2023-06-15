@@ -1,6 +1,7 @@
 import { Column, CreateDateColumn, Entity, OneToOne, PrimaryGeneratedColumn, Unique, UpdateDateColumn } from 'typeorm';
 
 import { CustomerEntity } from '../../customer/entities/customer.entity';
+import { RoleType } from '../type/user.type';
 
 @Entity({ name: 'user' })
 export class UserEntity {
@@ -22,6 +23,9 @@ export class UserEntity {
 
   @Column()
   gender!: string;
+
+  @Column({ type: 'enum', enum: RoleType, nullable: false })
+  role!: RoleType;
 
   @Column()
   @CreateDateColumn()

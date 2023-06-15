@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { CustomerService } from './customer.service';
+import { CustomerService } from '../services/customer.service';
 
 class CustomerController {
   constructor(private readonly customerService: CustomerService = new CustomerService()) {}
